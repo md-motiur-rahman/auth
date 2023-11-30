@@ -35,7 +35,7 @@ export default {
 
       console.log(result);
 
-      if (result.status === 201) {
+      if (result.status === 200) {
         alert("user created successfully");
       }
     },
