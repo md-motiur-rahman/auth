@@ -1,5 +1,7 @@
 # auth
 
+# for back end we used json web server. we can use any backend.
+
 ## Project setup
 ```
 npm install
