@@ -13,6 +13,7 @@
       <!-- <button type="submit" v-on:click="signUp">Sign Up</button> -->
       <input class="button" type="button" v-on:click="signUp" value="Sign Up" />
     </form>
+    <p>Already have account? <router-link to="/login">Login</router-link> </p>
   </div>
 </template>
 <script>
@@ -62,6 +63,10 @@ h1 {
   text-align: center;
   color: #35495e;
 }
+div p {
+    text-align: center;
+    color: #35495e;
+}
 .reg__form {
   width: 450px;
   margin: 0 auto;
@@ -98,7 +103,7 @@ h1 {
   background: #41b883;
 }
 
-.reg__form button:hover {
+.reg__form .button:hover {
   opacity: 0.8;
   transition: 0.5s;
 }
