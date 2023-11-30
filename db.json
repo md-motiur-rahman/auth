@@ -1,16 +1,28 @@
 {
   "users": [
     {
+      "name": "abul",
+      "email": "kabul@kabul.com",
+      "password": "abul",
+      "id": 1
+    },
+    {
+      "name": "sam",
+      "email": "sam@sam.com",
+      "password": "sam",
+      "id": 2
+    },
+    {
       "name": "Nabil",
       "email": "mrnmrn93@gmail.com",
-      "password": "123@abc",
-      "id": 1
+      "password": "nabil",
+      "id": 3
     },
     {
       "name": "abul",
       "email": "kabul@kabul.com",
       "password": "qwerty",
-      "id": 2
+      "id": 4
     }
   ]
 }

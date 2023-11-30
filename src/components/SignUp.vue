@@ -10,7 +10,8 @@
         placeholder="Password"
         required
       />
-      <button type="submit" v-on:click="signUp">Sign Up</button>
+      <!-- <button type="submit" v-on:click="signUp">Sign Up</button> -->
+      <input class="button" type="button" v-on:click="signUp" value="Sign Up" />
     </form>
   </div>
 </template>
@@ -35,8 +36,9 @@ export default {
 
       console.log(result);
 
-      if (result.status === 200) {
-        alert("user created successfully");
+      if (result.status === 201) {
+        localStorage.setItem("user", JSON.stringify(result.data));
+        this.$router.push({ name: "HomeCom" });
       }
     },
   },
@@ -77,7 +79,7 @@ h1 {
   font-size: 16px;
 }
 
-.reg__form button {
+.button {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
