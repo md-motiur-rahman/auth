@@ -10,14 +10,15 @@
         required
       />
       <!-- <button type="submit" v-on:click="signUp">Sign Up</button> -->
-      <input class="button" type="button" v-on:click="signUp" value="Sign Up" />
+      <input class="button" type="button" v-on:click="login" value="Sign Up" />
     </form>
     <p>
-      Don't have an account? <router-link to="/signup">Sign Up</router-link>
+      Don't have an account? <router-link to="/signup">Login</router-link>
     </p>
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "LoginCom",
   data() {
@@ -25,6 +26,23 @@ export default {
       email: "",
       password: "",
     };
+  },
+  methods: {
+    async login() {
+      let user = await axios.get(
+        `http://localhost:3000/users?email=${this.email}&password=${this.password}`
+      );
+      if (user.status === 200 && user.data.length > 0) {
+        localStorage.setItem("user", JSON.stringify(user.data));
+        this.$router.push({ name: "HomeCom" });
+      }
+    },
+  },
+  mounted() {
+    let user = localStorage.getItem("user");
+    if(user) {
+        this.$router.push({ name: "HomeCom" });
+    }
   },
 };
 </script>
@@ -41,8 +59,8 @@ h1 {
   color: #35495e;
 }
 div p {
-    text-align: center;
-    color: #35495e;
+  text-align: center;
+  color: #35495e;
 }
 .login__form {
   width: 450px;
