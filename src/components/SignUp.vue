@@ -2,24 +2,52 @@
   <div>
     <h1>Sign Up</h1>
     <form class="reg__form">
-      <input type="text" name="" id="" placeholder="Full Name" required />
-      <input type="email" name="" id="" placeholder="Email" required />
-      <input type="password" name="" id="" placeholder="Password" required />
-      <button>Sign Up</button>
+      <input type="text" v-model="name" placeholder="Full Name" required />
+      <input type="email" v-model="email" placeholder="Email" required />
+      <input
+        type="password"
+        v-model="password"
+        placeholder="Password"
+        required
+      />
+      <button type="submit" v-on:click="signUp">Sign Up</button>
     </form>
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "SignUp",
+  data() {
+    return {
+      name: "",
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    async signUp() {
+      let result = await axios.post("http://localhost:3000/users", {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+      });
+
+      console.log(result);
+
+      if (result.status === 201) {
+        alert("user created successfully");
+      }
+    },
+  },
 };
 </script>
 <style>
 div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 h1 {
   font-size: 40px;
@@ -60,7 +88,6 @@ h1 {
   border-radius: 5px;
   color: #fff;
   background: #41b883;
-  
 }
 
 .reg__form button:hover {
