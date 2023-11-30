@@ -38,10 +38,16 @@ export default {
 
       if (result.status === 201) {
         localStorage.setItem("user", JSON.stringify(result.data));
-        this.$router.push({ name: "HomeCom" });
+        
       }
     },
   },
+  mounted() {
+    let user = localStorage.getItem("user");
+    if(user) {
+        this.$router.push({ name: "HomeCom" });
+    }
+  }
 };
 </script>
 <style>

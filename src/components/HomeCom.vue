@@ -5,7 +5,13 @@
 </template>
 <script>
 export default {
-    name: 'HomeCom'
+    name: 'HomeCom',
+    mounted() {
+    let user = localStorage.getItem("user");
+    if(!user) {
+        this.$router.push({ name: "SignUp" });
+    }
+  }
 
 }
 </script>
