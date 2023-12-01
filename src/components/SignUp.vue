@@ -1,5 +1,6 @@
 <template>
   <div>
+    <img alt="Vue logo" src="../assets/logo.png" />
     <h1>Sign Up</h1>
     <form class="reg__form">
       <input type="text" v-model="name" placeholder="Full Name" required />
@@ -38,7 +39,7 @@ export default {
       console.log(result);
 
       if (result.status === 201) {
-        localStorage.setItem("user", JSON.stringify(result.data));
+        localStorage.setItem("user-info", JSON.stringify(result.data));
         
       }
     },

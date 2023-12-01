@@ -1,5 +1,6 @@
 <template lang="">
   <div>
+    <img alt="Vue logo" src="../assets/logo.png" />
     <h1>Login</h1>
     <form class="login__form">
       <input type="email" v-model="email" placeholder="Email" required />
@@ -13,7 +14,7 @@
       <input class="button" type="button" v-on:click="login" value="Sign Up" />
     </form>
     <p>
-      Don't have an account? <router-link to="/signup">Login</router-link>
+      Don't have an account? <router-link to="/signup">Sign Up</router-link>
     </p>
   </div>
 </template>
@@ -33,13 +34,13 @@ export default {
         `http://localhost:3000/users?email=${this.email}&password=${this.password}`
       );
       if (user.status === 200 && user.data.length > 0) {
-        localStorage.setItem("user", JSON.stringify(user.data));
+        localStorage.setItem("user-info", JSON.stringify(user.data));
         this.$router.push({ name: "HomeCom" });
       }
     },
   },
   mounted() {
-    let user = localStorage.getItem("user");
+    let user = localStorage.getItem("user-info");
     if(user) {
         this.$router.push({ name: "HomeCom" });
     }
